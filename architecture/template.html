@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mermaid Diagramme</title>
+    <script src="/assets/mermaid.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            background: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            border-bottom: 3px solid #4CAF50;
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            color: #555;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-left: 10px;
+            border-left: 4px solid #4CAF50;
+        }
+
+        .diagram-container {
+            margin: 30px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: #fafafa;
+        }
+
+        .diagram-title {
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #666;
+            font-size: 1.1em;
+        }
+
+        .mermaid {
+            text-align: center;
+            background: white;
+            border-radius: 4px;
+            padding: 20px;
+            margin: 10px 0;
+        }
+
+        .intro {
+            background: #e3f2fd;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border-left: 4px solid #2196F3;
+        }
+
+        .design-patterns {
+            background: #f3e5f5;
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border-left: 4px solid #9C27B0;
+        }
+
+        .design-patterns h2 {
+            margin-top: 0;
+            color: #7B1FA2;
+            border: none;
+            padding: 0;
+        }
+
+        .pattern {
+            background: white;
+            margin: 15px 0;
+            padding: 15px;
+            border-radius: 6px;
+            border: 1px solid #E1BEE7;
+        }
+
+        .pattern h3 {
+            margin-top: 0;
+            color: #7B1FA2;
+            font-size: 1.1em;
+        }
+
+        .section-intro {
+            background: #fff3e0;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            border-left: 3px solid #FF9800;
+            font-size: 0.95em;
+        }
+
+        code {
+            background: #f5f5f5;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            color: #d32f2f;
+        }
+
+        .toc h3 {
+            margin-top: 0;
+            color: #2E7D32;
+        }
+
+        .toc ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .toc li {
+            margin: 8px 0;
+            padding: 5px 0;
+        }
+
+        .toc a {
+            color: #2E7D32;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .toc a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <button onclick="window.history.back()"
+        style="position: fixed; left: 20px; top: 20px; width: 50px; height: 50px; border-radius: 50%; border: none; background: rgba(0,0,0,0.7); color: white; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 20px; backdrop-filter: blur(10px); transition: all 0.3s ease;"
+        onmouseover="this.style.background='rgba(0,0,0,0.9)'; this.style.transform='scale(1.1)'"
+        onmouseout="this.style.background='rgba(0,0,0,0.7)'; this.style.transform='scale(1)'">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+        </svg>
+    </button>
+    <div class="container">
+        <h1>Software Engineering Modelle - Sprint 3</h1>
+
+        <div class="intro">
+            <p>Auf dieser Seite sind die relevanten Software Engineering Modelle zum Ende von Sprint 3 (Sonntag
+                02.07.2023) hinterlegt.
+                Die Modelle zeigen sowohl den derzeitigen Stand des Projektes auf als auch den geplanten, verbesserten
+                Stand,
+                der in Sprint 4 als Teil des Refactoring durchgeführt wird.</p>
+        </div>
+
+        <div class="design-patterns">
+            <h2>Verwendete Design Patterns</h2>
+            <p>Im Projekt wurden mindestens <strong>2</strong> Program Design Patterns <strong>sinnvoll</strong>
+                verwendet:</p>
+
+            <div class="pattern">
+                <h3>Pattern 1: Singleton</h3>
+                <p><strong>Verwendet in:</strong> <code>backend/src/tables/&lt;...&gt;Table.ts</code></p>
+                <p><strong>Zweck:</strong> In allen Datenbank-Klassen haben wir das Singleton Pattern verwendet.
+                    Der Constructor wurde auf private gestellt und eine statische Instanz der Klasse wird in ihr selbst
+                    gespeichert.
+                    Dies verhindert, dass von einer Datenbank-Tabelle zwei Modelle über Sequelize erstellt werden
+                    können.
+                    Da es stets nur eine Tabelle desselben Namens/Typs gibt, ist es sinnvoll, auch nur ein Modell davon
+                    im Code erstellen zu können.</p>
+            </div>
+
+            <div class="pattern">
+                <h3>Pattern 2: Strategy</h3>
+                <p><strong>Verwendet in:</strong> <code>backend/src/controllers/PaymentController.ts</code> und
+                    <code>backend/src/payment</code>
+                </p>
+                <p><strong>Zweck:</strong> Der <code>PaymentController</code> stellt den Kontext des Strategy-Patterns
+                    dar,
+                    während die abstrakte Klasse <code>PaymentService</code> das Interface für die Zahlungsstrategien
+                    (<code>BachelorCardService</code>, <code>HCIPalService</code>, <code>SWPSafeService</code>) bietet.
+                    Die Verwendung des Patterns erlaubt es uns, den Prozess von <code>buyTicket</code> zu abstrahieren
+                    und nur das
+                    tatsächliche Ausführen der Zahlung für jeden Zahlungsanbieter separat implementieren zu müssen.</p>
+            </div>
+        </div>
+
+        <div class="toc">
+            <h3>Inhaltsverzeichnis</h3>
+            <ul>
+                <li><a href="#class-diagrams">Klassendiagramme (Backend)</a></li>
+                {% for diagram in class_diagrams %}
+                <li style="margin-left: 20px;"><a href="#{{ diagram.anchor }}">{{ diagram.title }}</a></li>
+                {% endfor %}
+                <li><a href="#sequence-diagrams">Sequenzdiagramme (Frontend)</a></li>
+                {% for diagram in sequence_diagrams %}
+                <li style="margin-left: 20px;"><a href="#{{ diagram.anchor }}">{{ diagram.title }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <section id="class-diagrams">
+            <h2>Backend Class Diagrams</h2>
+            <div class="section-intro">
+                <p><strong>Ist-Zustand:</strong> Diese Diagramme modellieren den aktuellen Zustand des Backend-Projekts.
+                    Die Dateien <code>app.ts</code> und <code>server.ts</code> wurden außenvorgelassen, da es sich
+                    hierbei nicht um Klassen handelt.</p>
+
+                <p><strong>Soll-Zustand:</strong> Die Verbesserungsideen belaufen sich hauptsächlich auf konsistentere
+                    Benennung von Methoden und Variablen.
+                    Die Struktur mit klarer Trennung (separation of concerns) von Datenbanktabellen
+                    (<code>...Table</code>),
+                    Request-Handling (<code>...Controller</code>) und API-Definition (<code>app.ts</code>) hat sich
+                    bewährt.</p>
+            </div>
+            {% for diagram in class_diagrams %}
+            <div class="diagram-container" id="{{ diagram.anchor }}">
+                <div class="diagram-title">{{ diagram.title }}</div>
+                <div class="mermaid">
+                    {{ diagram.content }}
+                </div>
+            </div>
+            {% endfor %}
+        </section>
+
+        <section id="sequence-diagrams">
+            <h2>Frontend Sequence Diagrams</h2>
+            <div class="section-intro">
+                <p><strong>Bezahlprozess:</strong> Modelliert den Ablauf zwischen User, System, Backend und Payment
+                    Provider.
+                    Für authentifizierte User werden Event-Daten, Ticket-Anzahl und Gesamtpreis angezeigt, dann die
+                    Zahlung über den Provider abgewickelt.</p>
+
+                <p><strong>Passwort editieren:</strong> Fokussiert auf den Teil mit der meisten Interaktion zwischen
+                    Systemmodulen.
+                    Während der Diagrammerstellung wurde eine Ineffizienz erkannt und korrigiert: Die
+                    Passwort-Format-Überprüfung erfolgt nun
+                    vor der Backend-Anfrage zur Überprüfung des alten Passworts.</p>
+            </div>
+            {% for diagram in sequence_diagrams %}
+            <div class="diagram-container" id="{{ diagram.anchor }}">
+                <div class="diagram-title">{{ diagram.title }}</div>
+                <div class="mermaid">
+                    {{ diagram.content }}
+                </div>
+            </div>
+            {% endfor %}
+        </section>
+    </div>
+
+    <script>
+        // Mermaid Konfiguration
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'default',
+            themeVariables: {
+                primaryColor: '#4CAF50',
+                primaryTextColor: '#333',
+                primaryBorderColor: '#4CAF50',
+                lineColor: '#666',
+                secondaryColor: '#f0f0f0',
+                tertiaryColor: '#fff'
+            }
+        });
+    </script>
+</body>
+
+</html>

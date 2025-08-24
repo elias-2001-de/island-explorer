@@ -1,0 +1,45 @@
+classDiagram
+    %% Payment System Classes
+    class BachelorCard {
+        +doPayment(cardNumber: string, name: string, securityCode: string, expirationDate: string, price: number, err: function, ok: function): void
+        -parseXML(xmlData: string, err: function, next: function): void
+        -validateCode(merchantName: string, cardNumber: string, err: function, next: function): void
+        -validatePayment(user: User, merchantName: string, price: number, err: function, next: function): void
+        -executePayment(merchantName: string, err: function, transactionCode: string, next: function): void
+    }
+
+    class HCIPal {
+        +doPayment(accountName: string, accountPassword: string, price: Number, err: function, ok: function): void
+        -validateCode(accountName: string, err: function, next: function): void
+        -validatePayment(user: User, err: function, next: function): void
+        -executePayment(token: string, err: function, next: function): void
+    }
+
+    class SWPSafe {
+        +doPayment(swpCode: string, price: Number, err: function, ok: function): void
+        -validatePayment(swpCode: string, price: Number, err: function, next: function): void
+        -parseCSV(data: string, header: string[], err: function, next: function): void
+        -executePayment(token: string, err: function, next: function): void
+        -validateCode(swpCode: string, err: function, next: function): void
+    }
+
+    class PaymentController {
+        -swpSafe: SWPSafe
+        -hciPal: HCIPal
+        -ticketTable: TicketTable
+        -bachelorCard: BachelorCard
+        -eventTable: EventTable
+        +constructor(ticketTable: TicketTable, eventTable: EventTable): PaymentController
+        -makeTicket(req: Request, res: Response): object
+        +swpSafeBuyTicket(req: Request, res: Response): void
+        +testBachelorCard(req: Request, res: Response): void
+        +testHciPal(req: Request, res: Response): void
+        +hciPalBuyTicket(req: Request, res: Response): void
+        +testSwpSafe(req: Request, res: Response): void
+        +bachelorCardBuyTicket(req: Request, res: Response): void
+    }
+
+    %% Relationships
+    PaymentController --> SWPSafe : uses
+    PaymentController --> HCIPal : uses
+    PaymentController --> BachelorCard : uses

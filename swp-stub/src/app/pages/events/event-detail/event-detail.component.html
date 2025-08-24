@@ -1,0 +1,54 @@
+<div *ngIf="event" class="page-container">
+
+  <app-back-button [headline]="this.event.title"></app-back-button>
+  <div class="scrollable-container">
+    <div class="detailpicture">
+      <img src="{{'/assets/mock-backend/img/events/' + event.picture}}" class="picture">
+    </div>
+
+    <div class="grid-container">
+      <mat-icon style="transform:scale(0.9);" class="icons"> date_range </mat-icon>
+      <div>{{'' + this.event.whole_date}}</div>
+      <mat-icon class="icons"> payment </mat-icon>
+      <div>{{event.prices![0].category}}: {{this.event.price}} €</div>
+    </div>
+
+    <br>
+    <div *ngIf="role === 'admin'" class="center">
+      <button class="button yellow" style="height: 40px" (click)="editEvent()"> Bearbeiten </button>
+    </div>
+    <div *ngIf="role === 'visitor'" class="center">
+      <button *ngIf="!inPast" class="yellow button" (click)="buyticket()"> Tickets buchen </button>
+      <div *ngIf="inPast" class="detail">Dieses Event liegt in der Vergangenheit.</div>
+    </div>
+
+
+    <br>
+    <hr>
+    <div [innerHTML]=this.event.description_html></div>
+    <hr>
+    <div class="subtitle">Standort auf der Insel</div>
+    <p id="location-name" [innerHTML]="event.location"></p>
+    <div id="detail-map">
+      <app-detail-map [lat]="this.event.coordinates_lat!" [long]="this.event.coordinates_lng!"></app-detail-map>
+    </div>
+  </div>
+
+  <br>
+  <div *ngIf="role === 'admin'" class="center">
+    <button class="button yellow" style="height: 40px" (click)="editEvent()"> Bearbeiten </button>
+  </div>
+  <div *ngIf="role !== 'admin'" class="center">
+    <button class="yellow button" (click)="buyticket()"> Tickets buchen </button>
+  </div>
+
+  <br>
+  <hr>
+  <div [innerHTML]=this.event.description_html></div>
+  <hr>
+  <div class="subtitle">Standort auf der Insel</div>
+  <p id="location-name" [innerHTML]="event.location"></p>
+  <div id="detail-map">
+    <app-detail-map [lat]="this.event.coordinates_lat!" [long]="this.event.coordinates_lng!"></app-detail-map>
+  </div>
+</div>

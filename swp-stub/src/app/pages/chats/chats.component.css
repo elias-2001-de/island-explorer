@@ -1,0 +1,39 @@
+.subtext {
+  font-size: 15px;
+}
+
+.headtext {
+  font-weight: 500;
+}
+
+.notification {
+  vertical-align: text-top;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  width: 12px;
+  height: 12px;
+  background-color: var(--mainau-beige);
+  margin-left: 3px;
+}
+
+.notificationtext {
+  line-height: 15px;
+  vertical-align: middle;
+  font-size: 10px;
+  color: var(--mainau-gold) !important;
+}
+
+.notif {
+  height: 40px;
+  width: 100%;
+  margin: 0px !important;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.headline {
+  font-weight: 900;
+  font-size: 23px;
+  text-align: center;
+  line-height: normal;
+}

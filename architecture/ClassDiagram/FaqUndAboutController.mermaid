@@ -1,0 +1,47 @@
+classDiagram
+    %% FAQ und AboutController System
+    class FAQController {
+        -faqTable: FAQTable
+        +constructor(faqTable: FAQTable): FAQController
+        +updateFAQ(req: Request, res: Response): Promise~void~
+        +addFAQ(req: Request, res: Response): Promise~void~
+        +deleteFAQ(req: Request, res: Response): Promise~void~
+        +getFAQ(req: Request, res: Response): Promise~void~
+    }
+
+    class FAQTable {
+        -table: ModelCtor~FAQModel~
+        +constructor(sequelize: Sequelize): FAQTable
+        +getAllFAQs(): Promise~FAQModel[]~
+        +getFAQById(id: number): Promise~FAQModel~
+        +deleteFAQ(id: number): Promise~number~
+        +insertFAQ(question: string, answer: string): Promise~FAQModel~
+        +updateFAQ(faq: FAQModel): Promise~array~
+    }
+
+    class FAQModel {
+        +id: number
+        +question: string
+        +answer: string
+    }
+
+    class AboutController {
+        +getInfo(req: Request, res: Response): void
+        +getEliasMaierInfo(req: Request, res: Response): void
+        +postEliasMaierInfo(req: Request, res: Response): void
+        +getJonathanHaesslerInfo(req: Request, res: Response): void
+        +postJonathanHaesslerInfo(req: Request, res: Response): void
+        +getNicolasLuckertInfo(req: Request, res: Response): void
+        +postNicolasLuckertInfo(req: Request, res: Response): void
+        +getPaulinaLeutloffInfo(req: Request, res: Response): void
+        +postPaulinaLeutloffInfo(req: Request, res: Response): void
+        +getRobinErbInfo(req: Request, res: Response): void
+        +postRobinErbInfo(req: Request, res: Response): void
+        +getLuciaSchopperInfo(req: Request, res: Response): void
+        +postLuciaSchopperInfo(req: Request, res: Response): void
+    }
+
+
+    %% Relationships
+    FAQController --> FAQTable : uses
+    FAQTable --> FAQModel : creates

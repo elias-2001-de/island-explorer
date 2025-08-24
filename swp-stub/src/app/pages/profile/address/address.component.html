@@ -1,0 +1,33 @@
+<div class="page-container">
+
+  <app-back-button headline="Adresse"></app-back-button>
+
+  <div class="scrollable-container">
+    <form [formGroup]="addressForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <app-user-input id="str" label="Straße" [myForm]="addressForm" formFieldName="street"
+          [errorMessage]="errorMessages['street']">
+        </app-user-input>
+        <app-user-input id="nr" label="Nummer" [myForm]="addressForm" formFieldName="house_no"
+          [errorMessage]="errorMessages['house_no']">
+        </app-user-input>
+      </div>
+
+      <app-user-input class="inputfield" label="Postleitzahl" [myForm]="addressForm" formFieldName="postcode"
+        [errorMessage]="errorMessages['postcode']">
+      </app-user-input>
+      <app-user-input class="inputfield" label="Ort" [myForm]="addressForm" formFieldName="city"
+        [errorMessage]="errorMessages['city']">
+      </app-user-input>
+
+      <br>
+
+      <div class="center">
+        <button class="yellow button">Speichern</button>
+      </div>
+      <div class="center">
+        <button class="beige button" (click)="abbrechen()">Abbrechen</button>
+      </div>
+    </form>
+  </div>
+</div>

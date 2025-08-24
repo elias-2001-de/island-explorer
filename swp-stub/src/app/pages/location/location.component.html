@@ -1,0 +1,20 @@
+<div *ngIf="location" class="page-container">
+
+  <app-back-button [headline]="this.location.name"></app-back-button>
+
+  <div class="scrollable-container">
+    <div class="pic">
+      <img class="detailpicture" [src]="this.location?.picture">
+      <!--<img class="detailpicture-fade" src="/assets/fadedrectangle.png">-->
+    </div>
+
+    <div [innerHTML]=this.location.description_html></div>
+    <hr>
+
+    <div class="subtitle">Standort auf der Insel</div>
+
+    <div id="location-map">
+      <app-detail-map [lat]="location.coordinates_lat" [long]="location.coordinates_lng"></app-detail-map>
+    </div>
+  </div>
+</div>

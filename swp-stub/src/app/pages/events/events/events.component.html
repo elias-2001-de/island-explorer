@@ -1,0 +1,80 @@
+<div class="page-container">
+  <h1>Events</h1>
+  <div *ngIf="role === 'visitor'">
+    <label class=" checkcontainer">
+      <input type="checkbox" [checked]="showFav" (change)="showFav = !showFav">
+      <span style="margin-left:25px;" class="checkmark"></span>
+      <div class="checktext"> Nur Favoriten anzeigen </div>
+    </label>
+  </div>
+
+  <div class="searchbar">
+    <app-search-field label="Suchen" [(text)]="search" (textChange)="showFilteredEvents(search)">
+    </app-search-field>
+  </div>
+
+  <div class="scrollable-container" style="padding-bottom: 100px;">
+
+    <div *ngFor="let event of sortedEvents">
+
+      <div *ngIf="(event.isFav && showFav) || !showFav">
+
+        <div class="margins grid">
+
+          <!-- all events for admins and visitors -->
+          <mat-button class="event eventcontainer" routerLink="{{ event.id }}">
+            <div class="text">
+              <img src="{{ '/assets/mock-backend/img/events/' + event.picture }}" class="picture" />
+              <div>
+                <div class="heading" [innerHTML]="event.title"></div>
+                <div class="description">
+                  {{ this.event.whole_date }} <br>
+                  {{ event.price + "€" }}
+                </div>
+              </div>
+            </div>
+          </mat-button>
+
+          <!-- the favorite button for visitors -->
+          <div *ngIf="role === 'visitor'" class="event star">
+            <mat-button [class.fav]="event.isFav" mat-icon-button [attr.id]="event.id+''" (click)="toggleFav(event.id)">
+              <mat-icon>star</mat-icon>
+            </mat-button>
+          </div>
+
+          <!-- the edit button for admins -->
+          <div *ngIf="role === 'admin'" class="event edit">
+            <mat-button mat-icon-button id="{{event.id}} ++ 'unique'" (click)="editEvent(event.id)">
+              <mat-icon>edit</mat-icon>
+            </mat-button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Pop up window: if a user removes an event as favorite -->
+      <div [attr.id]="event.id+'modal'" class="modal">
+        <div class="modal-content">
+          <p>Willst du <span style=" font-weight: 600;">{{this.event.title}}</span> aus deinen Favoriten entfernen?
+          </p>
+          <div class="buttongrid">
+            <button class=" beige button" style="width:100%" (click)="closeOne(this.event)"> Nein</button>
+            <button class=" yellow button" style="width:100%" (click)="deleteFav(this.event)"> Ja</button>
+          </div>
+        </div>
+      </div>
+        <!-- Pop up window: if an admin updates an event successfully -->
+        <div id="success" class="modal">
+          <div class="modal-content">
+            <p>Dein Event wurde erfolgreich hinzugefügt/geändert!</p>
+            <div class="buttongrid">
+              <button class=" beige button" style="width:100%" (click)="closeSuccess()"> Auf der Seite bleiben
+              </button>
+              <button class=" yellow button" style="width:100%" (click)="goToEventDetail()"> Zum Event </button>
+            </div>
+          </div>
+        </div>
+    </div>
+
+  </div>
+</div>

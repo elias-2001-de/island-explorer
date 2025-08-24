@@ -1,0 +1,60 @@
+<div class="page-container pagegrid">
+  <div class="headgrid">
+    <div style="font-weight: 900; margin-left:20px; font-size: 40px; line-height: 52px;"> FAQ </div>
+    <button class="yellow button" style="height: 42px; margin-right:21px; width:100px" routerLink="userquestion">
+      Fragen stellen </button>
+    <button class="beige button" style="height: 42px; margin-right:21px; width:100px" routerLink="chats">
+        <div class="notificationfaq">
+          <div class="notificationtextfaq">{{ this.openLen }}</div>
+        </div>
+      Deine Fragen
+    </button>
+  </div>
+
+  <div class="scrollable-container">
+    <div *ngFor="let faq of faqs">
+      <details>
+        <summary>
+          {{this.faq.question}}
+        </summary>
+        <div lang="de" class="detailtext">
+          {{this.faq.answer}}
+        </div>
+      </details>
+    </div>
+
+    <p class="detail">
+      Du hast eine weitere Pflanzen-Frage, die nicht im FAQ dabei ist?
+      <br>
+      Dann benutze doch einfach das <a routerLink="userquestion">Grüne Telefon</a> und stell unseren
+      Gärtnern deine Frage!
+    </p>
+  </div>
+
+
+  <div class="bottomgrid">
+    <hr style="margin-left: -20px; margin-right:-20px;">
+    <div class="contactheader">
+
+      Kontaktieren Sie uns vor Ort </div>
+    <div class="contactsubheader">
+      Ratschläge rund um den Garten </div>
+
+    <div class="grid-container">
+      <div class="contacttext">
+        Platanenweg 5<br>
+        Dienstag bis Sonntag <br>
+        Vormittags: <br>
+        <div class="contacttime">10.30 bis 12.30 Uhr</div>
+        Nachmittags:<br>
+        <div class="contacttime">13.00 bis 15.00 Uhr</div>
+      </div>
+
+
+      <div id="location-map">
+        <app-detail-map [lat]="47.70475111537479" [long]="9.195249855100897"></app-detail-map>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,26 @@
+<div [formGroup]="myForm" class="container">
+
+  <p [ngClass]="isInvalid() ?  'label-invalid': 'label'" *ngIf="label">
+    {{ label }}
+  </p>
+
+  <div class="input-box" [ngClass]="getInputBoxClass()">
+    <input #inputField class="input-field" [type]="type" [accept]="accept" [formControlName]="formFieldName">
+    <div *ngIf="inputField.value !== ''">
+      <div *ngIf="type !== 'date'">
+        <input type="image" class="clear-button" src="../../../assets/close.png" (click)="resetFormFieldValue($event);"
+          tabindex="-1">
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="error" *ngIf="isInvalid() && myForm.value[formFieldName] === ''">
+      Dieses Feld bitte ausfüllen.
+    </div>
+    <div class="error" *ngIf="isInvalid() && myForm.value[formFieldName] !== ''">
+      {{ errorMessage }}
+    </div>
+  </div>
+
+</div>

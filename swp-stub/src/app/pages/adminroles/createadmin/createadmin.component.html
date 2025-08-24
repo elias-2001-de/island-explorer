@@ -1,0 +1,71 @@
+<div class="page-containerAlt">
+  <app-back-button headline="Admin / Gärtner erstellen"></app-back-button>
+  <div class="scrollable-container">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <input type="radio" id="gardener" name="roleSelect" value="gardener" checked>
+      <label class="roletext" for="gärtner"> Gärtner </label><br>
+      <input type="radio" id="admin" name="roleSelect" value="admin">
+      <label class="roletext" for="admin"> Admin</label><br>
+
+      <br>
+
+      <div class="row">
+        <app-user-input id="firstname" label="Vorname" [myForm]="registerForm" formFieldName="firstname"
+          [errorMessage]="errorMessages['firstname']">
+        </app-user-input>
+        <app-user-input id="lastname" label="Nachname" [myForm]="registerForm" formFieldName="lastname"
+          [errorMessage]="errorMessages['lastname']">
+        </app-user-input>
+      </div>
+
+      <br>
+
+      <div class="row">
+        <app-user-input label="Email" #email [myForm]="registerForm" formFieldName="email"
+          [errorMessage]="errorMessages['email']">
+        </app-user-input>
+      </div>
+
+      <div class="row">
+        <app-user-input label="Passwort" type="password" [myForm]="registerForm" formFieldName="password"
+          [errorMessage]="errorMessages['password']">
+        </app-user-input>
+      </div>
+
+      <div class="row">
+        <app-user-input label="Passwort wiederholen" type="password" [myForm]="registerForm" formFieldName="passwordRep"
+          [errorMessage]="errorMessages['passwordRep']">
+        </app-user-input>
+      </div>
+
+      <br>
+
+      <div class="errorMessage center">{{ errorMessage }}</div>
+
+      <br>
+
+      <div class="center">
+        <button class="button yellow" [disabled]="submitted"> Erstellen </button>
+      </div>
+    </form>
+    <br>
+
+    <div id="modal" class="modal">
+      <div class="modal-content">
+        <p>
+          Der neuer
+          <span *ngIf="user?.role === 'admin'"> Administrator </span>
+          <span *ngIf="user?.role === 'gardener'"> Gärtner </span>
+          <br>
+          <span style=" font-weight: 600;">
+            {{this.user?.firstname}} {{this.user?.lastname}}</span> ({{this.user?.email}})
+          wurde hinzugefügt.
+        </p>
+        <div class="buttongrid">
+          <button class=" yellow button" style="width:100%" (click)="close()"> Weiter</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

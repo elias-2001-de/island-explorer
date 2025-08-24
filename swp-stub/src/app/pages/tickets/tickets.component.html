@@ -1,0 +1,52 @@
+<div class="page-container">
+  <h1> Deine Tickets </h1>
+  <label class="checkcontainer">
+    <input type="checkbox" [checked]="showExpired" (change)="showExpired = !showExpired">
+    <span style="margin-left:25px;" class="checkmark"></span>
+    <div class="checktext"> Abgelaufene Tickets anzeigen </div>
+  </label>
+
+  <div class="scrollable-container">
+    <h2> Kommende Events </h2>
+    <div *ngFor="let ticket of upcomingTickets">
+      <mat-button class="ticketcontainer margins" (click)="showDetail(ticket.event_id)">
+        <div class="ticket text">
+          <img src="{{'/assets/mock-backend/img/events/' + ticket.picture}}" class="picture">
+          <div>
+            <div class="heading" [innerHTML]="ticket.title"></div>
+            <div class="description">
+              {{this.ticket.whole_date}} <br>
+            </div>
+            <div *ngFor="let cat of ticket.amounts">
+              <p class="ticketentry">{{cat.amount}}x {{cat.category}}</p>
+            </div>
+          </div>
+        </div>
+      </mat-button>
+    </div>
+
+
+    <br>
+
+    <div *ngIf="showExpired">
+      <hr>
+      <h2>Vergangene Events</h2>
+      <div *ngIf="expiredTickets?.length === 0" class="detail"> Du hast noch keine abgelaufenen Tickets. </div>
+      <div *ngFor="let ticket of expiredTickets">
+        <mat-button class="ticketcontainer margins" (click)="showDetail(ticket.event_id)">
+          <div class="ticket text">
+            <img src="{{'/assets/mock-backend/img/events/' + ticket.picture}}" class="picture">
+            <div>
+              <div class="heading" [innerHTML]="ticket.title"></div>
+              <div class="description">
+                {{this.ticket.whole_date}} <br>
+              </div>
+              <div *ngFor="let cat of ticket.amounts">
+                <p>{{cat.amount}}x {{cat.category}}</p>
+              </div>
+            </div>
+          </div>
+        </mat-button>
+      </div>
+    </div>
+  </div>

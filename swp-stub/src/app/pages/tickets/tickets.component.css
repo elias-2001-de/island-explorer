@@ -1,0 +1,67 @@
+.expired {
+  background-color: lightgray !important;
+}
+
+.description {
+  font-weight: 400;
+}
+
+.text {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  font-size: 16px;
+}
+
+.heading {
+  font-weight: bold;
+}
+
+.picture {
+  max-width: 100px;
+  max-height: 100px;
+  margin-right: 10px;
+  background-size: cover;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+}
+
+.ticketcontainer {
+  display: grid;
+  /*grid-template-columns: 9fr 1fr;*/
+  background-color: var(--mainau-beige);
+  color: var(--mainau-green);
+  padding: 5px;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.amount {
+  float: right;
+  background-color: var(--mainau-beige);
+  color: var(--mainau-green);
+  padding: 5px;
+  border-radius: 5px;
+  height: flex;
+  align-items: center;
+}
+
+.ticket {
+  background-color: var(--mainau-beige);
+  color: var(--mainau-green);
+}
+
+.amounttext {
+  font-size: 40px;
+  color: var(--mainau-green);
+}
+
+.ticketentry {
+  margin: 0 0 0 0;
+}
+
+.margins {
+  margin-top: 10px;
+  margin-bottom: 15px;
+}

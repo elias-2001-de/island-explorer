@@ -1,0 +1,40 @@
+<div *ngIf="event" class="page-container">
+  <app-back-button [headline]="this.event.title"></app-back-button>
+  <div class="scrollable-container">
+    <p class="ticketdate">{{this.event.whole_date}}</p>
+    <div class="ticketbox flex-col">
+      <div *ngFor="let cat of this.event?.prices">
+        <div class="flex-row">
+          <div class="ticketinfo"> {{cat.category}}: {{cat.price}} € </div>
+          <div class="ticketamount">
+            <div class="amountalign">
+              <button [attr.id]="cat.category + 'd'" disabled (click)="decreaseAmount(cat)"
+                class="unavailable counter minus"> - </button>
+              <input disabled id={{cat.category}} class="amount" min="0" max="99" value="0" type="number">
+              <button [attr.id]="cat.category + 'i'" (click)="increaseAmount(cat)" class="counter plus">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="ticketcost">Gesamtkosten: {{totalPrice}} €</p>
+    <br>
+    <br>
+    <p style="font-size:18px;font-weight:700;">Zahlungsanbieter:</p>
+
+    <button class="box" (click)="proceedToPayment('bachelorcard')" [disabled]="numTickets===0">
+      <img class="logo" src=".\.\assets\payment\bachelorcard.png">
+      <img class="arrow" src=".\.\assets\payment\arrow.png">
+    </button>
+
+    <button class="box" (click)="proceedToPayment('hcipal')" [disabled]="numTickets===0">
+      <img class="logo" src=".\.\assets\payment\hciPal.png">
+      <img class="arrow" src=".\.\assets\payment\arrow.png">
+    </button>
+
+    <button class="box" (click)="proceedToPayment('swpsafe')" [disabled]="numTickets===0" style=" margin-bottom: 100px;">
+      <img class="logo" src=".\.\assets\payment\swpsafe.png">
+      <img class="arrow" src=".\.\assets\payment\arrow.png">
+    </button>
+  </div>
+</div>

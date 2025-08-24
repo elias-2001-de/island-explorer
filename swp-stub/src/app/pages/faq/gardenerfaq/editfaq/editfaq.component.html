@@ -1,0 +1,25 @@
+<div class="page-container">
+  <app-back-button headline="FAQ bearbeiten"></app-back-button>
+  <div class="scrollable-container" style="padding-bottom: 40px">
+
+    <form [formGroup]="addQuestionForm" (ngSubmit)="onSubmit()">
+
+      <app-user-textarea class="inputfield" label="Frage" [myForm]="addQuestionForm" formFieldName="question"
+        [errorMessage]="errorMessages['question']" [heightPx]="150">
+      </app-user-textarea>
+
+      <app-user-textarea class="inputfield" label="Antwort" [myForm]="addQuestionForm" formFieldName="answer"
+        [errorMessage]="errorMessages['answer']" [heightPx]="200">
+      </app-user-textarea>
+      <br>
+
+      <div class="center">
+        <button class="yellow button" [disabled]="submitted">Speichern</button>
+      </div>
+      <div class="center">
+        <button class="beige button" (click)="abbrechen()" [disabled]="submitted">Abbrechen</button>
+      </div>
+
+    </form>
+  </div>
+</div>

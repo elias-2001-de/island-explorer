@@ -1,0 +1,23 @@
+.backarrow {
+  transform: scale(1.2);
+  flex-grow: 1;
+  width: 10%;
+
+}
+
+.headline {
+  font-weight: 900;
+  font-size: 23px;
+  text-align: center;
+  line-height: 35px;
+  width: 80%;
+}
+
+.flex {
+  margin: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  width: 100%;
+}

@@ -1,0 +1,39 @@
+<div *ngIf="event" class="page-container">
+  <app-back-button [headline]="this.event.title"></app-back-button>
+  <div class="scrollable-container">
+    <app-ticket-price-info [selectedTickets]="this.selectedTickets" [event]="this.event">
+    </app-ticket-price-info>
+    <br>
+    <br>
+
+    <div class="center ellipse">
+      <img id="logo" src=".\.\assets\payment\hciPal.png"><br>
+    </div><br>
+
+    <form [formGroup]="hciPalForm" (ngSubmit)="onSubmit()">
+      <app-user-input class="paymentinput" label="Email" [myForm]="hciPalForm"
+        [errorMessage]="errorMessages['email']" formFieldName="email">
+      </app-user-input>
+      <app-user-input class="paymentinput" type="password" label="Passwort" [myForm]="hciPalForm"
+        [errorMessage]="errorMessages['password']" formFieldName="password">
+      </app-user-input>
+
+      <div class="center">
+        <br>
+        <div id="dynamic"></div>
+        <br>
+        <div *ngIf="errorMessage" class="errorMessage">{{ errorMessage }}</div>
+      </div>
+      <br>
+
+      <div class="center">
+        <button class="button yellow" [disabled]="buttonDisabled">Jetzt
+          Kaufen</button>
+      </div>
+    </form>
+
+    <div class="center">
+      <button class="beige button" (click)="cancel()" [disabled]="buttonDisabled">Abbrechen</button>
+    </div>
+    <div>
+    </div>

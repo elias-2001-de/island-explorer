@@ -1,0 +1,81 @@
+<div *ngIf="user" class="page-container">
+  <h1>Mein Profil</h1>
+
+  <div class="scrollable-container">
+
+    <div class="profile-info">
+      <table>
+
+        <tr>
+          <td class="tableEntry">
+            Name
+          </td>
+          <td class="content">
+            {{this.user.firstname }} {{this.user.lastname}}
+          </td>
+          <td>
+            <button class="btn edit-btn" routerLink="name">
+              <mat-icon>edit</mat-icon>
+            </button>
+          </td>
+        </tr>
+      </table>
+      <hr>
+      <table>
+        <tr>
+          <td class="tableEntry"> Adresse </td>
+          <td class="content">
+        <tr> {{this.user.street }} {{this.user.house_no}} </tr>
+        <tr> {{this.user.postcode }} {{this.user.city}} </tr>
+        </td>
+        <td>
+          <button class="btn edit-btn" routerLink="adress">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </td>
+        </tr>
+      </table>
+      <hr>
+      <table>
+        <tr>
+          <td class="tableEntry"> Email </td>
+          <td class="content"> {{this.user.email}}</td>
+          <td></td>
+        </tr>
+      </table>
+      <hr>
+      <table>
+        <tr>
+          <td class="tableEntry">
+            Passwort
+          </td>
+          <td class="content">
+            ●●●●●●●●●●
+          </td>
+          <td>
+            <button class="btn edit-btn" routerLink="password">
+              <mat-icon>edit</mat-icon>
+            </button>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <button class="btn logout-btn" (click)="logout()">
+
+      <div class="btn-layout">
+        <div class="icon">
+          <mat-icon>logout</mat-icon>
+        </div>
+        <div class="text">
+          Abmelden
+        </div>
+      </div>
+    </button>
+
+    <div class="about">
+      Mehr Informationen: <a routerLink="about"> Über uns</a>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,51 @@
+classDiagram
+    %% Ticketing and Favorites System
+    class TicketController {
+        -ticketTable: TicketTable
+        +constructor(ticketTable: TicketTable, eventTable: EventTable): TicketController
+        +getTickets(req: Request, res: Response): Promise~void~
+    }
+
+    class FavoritesController {
+        -favoritesTable: FavoritesTable
+        +constructor(favoritesTable: FavoritesTable): FavoritesController
+        +addFavorite(req: Request, res: Response): Promise~void~
+        +removeFavorite(req: Request, res: Response): Promise~void~
+        +getFavorites(req: Request, res: Response): Promise~void~
+    }
+
+    class TicketTable {
+        -table: ModelCtor~TicketModel~
+        +constructor(sequelize: Sequelize): TicketTable
+        +getAllTickets(): Promise~TicketModel[]~
+        +getTicketsForUser(email: string): Promise~TicketModel[]~
+        +getTicketsForEvent(eventId: number): Promise~TicketModel[]~
+        +insertTicket(ticket: TicketModel): Promise~array~
+        +deleteTicket(email: string, eventId: number): Promise~number~
+    }
+
+    class FavoritesTable {
+        -table: ModelCtor~FavoritesModel~
+        +constructor(sequelize: Sequelize): FavoritesTable
+        +insertFavorite(email: string, eventId: number): Promise~FavoritesModel~
+        +deleteFavorite(email: string, eventId: number): Promise~number~
+        +getFavoritesForUser(email: string): Promise~FavoritesModel[]~
+    }
+
+    class TicketModel {
+        +email: string
+        +eventId: number
+        +category: string
+        +amount: number
+    }
+
+    class FavoritesModel {
+        +email: string
+        +eventId: number
+    }
+
+    %% Relationships
+    TicketController --> TicketTable : uses
+    FavoritesController --> FavoritesTable : uses
+    TicketTable --> TicketModel : creates
+    FavoritesTable --> FavoritesModel : creates

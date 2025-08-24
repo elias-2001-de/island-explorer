@@ -1,0 +1,78 @@
+<div class="page-containerAlt">
+  <app-back-button headline="Neues Kundenkonto"></app-back-button>
+  <div class="scrollable-container">
+    <form [formGroup]="registerForm" (keydown)="keyDownFunction($event)" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <app-user-input id="firstname" label="Vorname" [myForm]="registerForm" formFieldName="firstname"
+          [errorMessage]="errorMessages['firstname']">
+        </app-user-input>
+        <app-user-input id="lastname" label="Nachname" [myForm]="registerForm" formFieldName="lastname"
+          [errorMessage]="errorMessages['lastname']">
+        </app-user-input>
+      </div>
+      <br>
+
+      <div class="row">
+        <app-user-input id="street" label="Straße" [myForm]="registerForm" formFieldName="street"
+          [errorMessage]="errorMessages['street']">
+        </app-user-input>
+        <app-user-input id="house_no" label="Hausnummer" [myForm]="registerForm" formFieldName="house_no"
+          [errorMessage]="errorMessages['house_no']">
+        </app-user-input>
+      </div>
+
+      <div class="row">
+        <app-user-input label="Postleitzahl" [myForm]="registerForm" formFieldName="postcode"
+          [errorMessage]="errorMessages['postcode']">
+        </app-user-input>
+      </div>
+
+      <div class="row">
+        <app-user-input label="Ort" [myForm]="registerForm" formFieldName="city" [errorMessage]="errorMessages['city']">
+        </app-user-input>
+      </div>
+
+      <br>
+
+      <div class="row">
+        <app-user-input label="Email" #email [myForm]="registerForm" formFieldName="email"
+          [errorMessage]="errorMessages['email']">
+        </app-user-input>
+      </div>
+
+      <div class="row">
+        <app-user-input label="Passwort" type="password" [myForm]="registerForm" formFieldName="password"
+          [errorMessage]="errorMessages['password']">
+        </app-user-input>
+      </div>
+
+      <div class="row">
+        <app-user-input label="Passwort wiederholen" type="password" [myForm]="registerForm" formFieldName="passwordRep"
+          [errorMessage]="errorMessages['passwordRep']">
+        </app-user-input>
+      </div>
+
+      <br>
+
+      <div class="errorMessage center">{{ errorMessage }}</div>
+
+      <br>
+
+      <div class="center">
+        <button class="button yellow" [disabled]="submitted">Registrieren</button>
+      </div>
+    </form>
+    <br>
+
+    <div class="center">
+      Konto vorhanden? &nbsp; <a routerLink="/login">Zum Login</a>
+    </div>
+
+    <br>
+
+    <div class="center about">
+      Mehr Informationen: &nbsp; <a routerLink="/about">Über uns</a>
+    </div>
+
+  </div>
+</div>

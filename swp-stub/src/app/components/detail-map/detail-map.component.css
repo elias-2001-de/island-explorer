@@ -1,0 +1,9 @@
+.map {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  border-style: solid;
+  border-radius: 5%;
+  border-width: 3px;
+  border-color: var(--mainau-beige);
+}

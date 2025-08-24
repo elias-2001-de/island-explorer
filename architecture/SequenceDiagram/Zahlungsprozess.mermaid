@@ -1,0 +1,36 @@
+
+sequenceDiagram
+    participant User
+    participant System
+    participant Backend
+    participant PaymentProvider as Payment Provider
+
+    Note over User, PaymentProvider: Diagramm 3: Zahlungsprozess
+    
+    User->>System: 1: request to localhost
+    System->>Backend: 2: get event
+    Backend->>Backend: 3: check authentication of user
+    Backend->>System: 4: send event details
+    System->>System: 5: compute amount and cost
+    System->>User: 6: send landingpage
+    User->>System: 7: submit data
+    System->>System: 8: check input format
+    
+    alt format check not successful
+        System->>User: 9: error - format check not successful
+        Note left of User: break wrong format
+    else format check successful
+        System->>Backend: 10: send data
+        Backend->>PaymentProvider: 11: send data sequentially
+        
+        alt payment data incorrect
+            PaymentProvider->>Backend: 12: error - data incorrect
+            Backend->>System: 13: error message
+            System->>User: 14: error message
+        else payment successful
+            PaymentProvider->>Backend: 15: data correct
+            Backend->>Backend: 16: update ticket database
+            Backend->>System: 17: payment successful
+            System->>User: 18: redirect to success page
+        end
+    end

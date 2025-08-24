@@ -1,0 +1,81 @@
+classDiagram
+    %% Event and Location Management
+    class EventController {
+        -eventTable: EventTable
+        -locationTable: LocationTable
+        +constructor(eventTable: EventTable, locationTable: LocationTable): EventController
+        +getEvents(req: Request, res: Response): Promise~void~
+        +getEvent(req: Request, res: Response): Promise~void~
+        +editEvent(req: Request, res: Response): Promise~void~
+        +addEvent(req: Request, res: Response): Promise~void~
+        +deleteEvent(req: Request, res: Response): Promise~void~
+    }
+
+    class LocationController {
+        -locationTable: LocationTable
+        +constructor(locationTable: LocationTable): LocationController
+        +getLocations(req: Request, res: Response): Promise~void~
+        +getLocation(req: Request, res: Response): Promise~void~
+    }
+
+    class EventTable {
+        -infoTable: ModelCtor~EventModel~
+        -categoryTable: ModelCtor~TicketCategoryModel~
+        +constructor(sequelize: Sequelize): EventTable
+        +getAllEventsFull(): Promise~EventModel[]~
+        +getAllEvents(showExpired: boolean): Promise~EventModel[]~
+        +getEventById(id: number): Promise~EventModel~
+        +deleteEvent(id: number): Promise~number~
+        +deleteAllExpiredEvents(): Promise~number~
+        +insertEvent(event: EventModel): Promise~EventModel~
+        +updateEvent(event: EventModel): Promise~array~
+        +getTicketCategoriesForEvent(eventId: number): Promise~TicketCategoryModel[]~
+    }
+
+    class LocationTable {
+        -table: ModelCtor~LocationModel~
+        +constructor(sequelize: Sequelize): LocationTable
+        +getAllLocationsFull(): Promise~LocationModel[]~
+        +getAllLocations(): Promise~LocationModel[]~
+        +getLocationById(id: number): Promise~LocationModel~
+        +getLocationByName(name: string): Promise~LocationModel~
+        +deleteLocationById(id: number): Promise~number~
+        +insertLocation(location: LocationModel): Promise~LocationModel~
+        +updateLocation(location: LocationModel): Promise~array~
+    }
+
+    class EventModel {
+        +id: number
+        +title: string
+        +location: string
+        +price: number
+        +end_date: Date
+        +picture: string
+        +startDate: Date
+        +description: string
+        +description_html: string
+    }
+
+    class TicketCategoryModel {
+        +eventId: number
+        +category: string
+        +price: number
+    }
+
+    class LocationModel {
+        +id: number
+        +name: string
+        +coordinatesLat: number
+        +coordinatesLng: number
+        +description: string
+        +picture: string
+        +descriptionHtml: string
+    }
+
+    %% Relationships
+    EventController --> EventTable : uses
+    EventController --> LocationTable : uses
+    LocationController --> LocationTable : uses
+    EventTable --> EventModel : creates
+    EventTable --> TicketCategoryModel : creates
+    LocationTable --> LocationModel : creates

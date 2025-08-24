@@ -1,0 +1,39 @@
+<div class="page-container">
+  <div class="grid">
+    <div class="center" style="font-weight: 900; margin-left:20px;    font-size: 40px; line-height: 47px;"> FAQ
+    </div>
+    <button class="yellow button"
+      style="height: 35px; margin-right:21px; width:90%; border-color: var(--mainau-beige) !important; border-radius:3px;"
+      routerLink="createfaq">
+      Frage hinzufügen </button>
+  </div>
+
+  <div class="scrollable-container" style="padding-bottom:50px;">
+    <div *ngFor="let faq of faqs">
+      <div class="eventcontainer">
+        <details>
+          <summary>
+
+            {{this.faq.question}}
+
+          </summary>
+          <div lang="de" class="detailtext">
+
+            {{this.faq.answer}}
+
+            <br>
+            <div class="grid">
+              <button class="beige button gridbuttons" style="border: 2px solid var(--mainau-green)"
+                (click)="deletQuestion(faq.id)"> Frage
+                löschen </button>
+
+              <button class="yellow button gridbuttons" routerLink="editfaq/{{faq.id}}">
+                Frage bearbeiten </button>
+
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+</div>

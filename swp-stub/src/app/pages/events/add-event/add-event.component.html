@@ -1,0 +1,87 @@
+<div class="page-container">
+
+  <h1 *ngIf="new"> Neues Event hinzufügen</h1>
+  <app-back-button *ngIf="!new" headline="Event Bearbeiten"></app-back-button>
+
+  <div class="scrollable-container" style="padding-bottom: 40px">
+
+    <img id="placeholder" #placeholder src="/assets/select.png" class="picture">
+
+    <app-user-input [type]="'file'" class="inputfield" accept="image/*" label="Bild auswählen" [myForm]="addEventForm"
+      formFieldName="picture" [errorMessage]="errorMessages['picture']" (click)="removeFile($event)"
+      (change)="addFile($event)"></app-user-input>
+
+    <form [formGroup]="addEventForm" (ngSubmit)="onSubmit()">
+      <app-user-input class="inputfield" label="Eventname" [myForm]="addEventForm" formFieldName="title"
+        [errorMessage]="errorMessages['title']">
+      </app-user-input>
+
+      <div class="row">
+        <app-user-input id="start" label="Startdatum" [myForm]="addEventForm" formFieldName="start_date" [type]="'date'"
+          [errorMessage]="(addEventForm.get('start_date')?.hasError('StartDateNotBeforeEnd')) ? errorMessages['StartDateNotBeforeEnd'] : errorMessages['start_date']">
+        </app-user-input>
+        <app-user-input id="end" label="Enddatum" [myForm]="addEventForm" formFieldName="end_date" [type]="'date'"
+          [errorMessage]="(addEventForm.get('end_date')?.hasError('EndDateNotInFuture')) ? errorMessages['EndDateNotInFuture'] : errorMessages['end_date']">
+        </app-user-input>
+      </div>
+
+      <div id="locations-map">
+        <div class="map" leaflet [leafletOptions]="options" [leafletLayers]="layers">
+        </div>
+        <div class="locationName">
+          <div id="selectedLocation"> Ausgewählter Veranstaltungsort: </div>
+          <input formFieldName="location" id="location-title" #locationName value={{this.locname}} readonly>
+          <span [innerHTML]="this.locname"></span>
+          <div class="error" id="locationerror" *ngIf="isInvalid(addEventForm.get('location')!)">
+            Wähle einen Veranstaltungsort auf der Karte.
+          </div>
+        </div>
+      </div>
+
+      <ng-container *ngFor="let formGr of getTicketCategories(); let i = index">
+        <div class="row container" [formGroup]="formGr">
+          <label class="category-item" [ngClass]="isInvalid(formGr.get('price')!) ? 'label-invalid': 'label'">
+            Ticket-Kategorie
+            <input class="category-item input-field" type="text" formControlName="category">
+            <div class="error" *ngIf="isInvalid(formGr.get('category')!) && formGr.value['category'] === ''">
+              Dieses Feld bitte ausfüllen.
+            </div>
+          </label>
+          <label class="price-item" [ngClass]="isInvalid(formGr.get('price')!) ? 'label-invalid': 'label'">
+            Preis
+            <input class="price-item input-field" type="text" formControlName="price">
+            <div class="error" *ngIf="isInvalid(formGr.get('price')!) && formGr.value['price'] === ''">
+              Dieses Feld bitte ausfüllen.
+            </div>
+            <div class="error" *ngIf="isInvalid(formGr.get('price')!) && formGr.value['price'] !== ''">
+              {{ errorMessages['price'] }}
+            </div>
+          </label>
+          <button *ngIf="i>0" type="button" class="beige button center remove-btn"
+            (click)="removeTicketCategory(i)">Kategorie entfernen</button>
+        </div>
+      </ng-container>
+
+      <button type="button" id="newCategoryBtn" class="yellow button center" (click)="addTicketCategory()">Neue
+        Kategorie</button>
+
+      <app-user-textarea [heightPx]="200" class="inputfield" label="Beschreibung" [myForm]="addEventForm"
+        formFieldName="description_html" [errorMessage]="errorMessages['description_html']">
+      </app-user-textarea>
+
+      <br>
+      <div class="errorMessage center">{{ errorMessage }}</div>
+      <br>
+
+      <div class="center">
+        <button *ngIf="new" class="yellow button" [disabled]="submittedChanges">Hinzufügen</button>
+        <button *ngIf="!new" style="height: 50px;" class="yellow button" [disabled]="submittedChanges">Änderungen
+          speichern</button>
+      </div>
+      <div class="center">
+        <button class="beige button" (click)="abbrechen()" [disabled]="submittedChanges">Abbrechen</button>
+      </div>
+    </form>
+
+  </div>
+</div>

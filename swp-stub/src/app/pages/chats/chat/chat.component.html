@@ -1,0 +1,31 @@
+<div class="page-container" style="padding-bottom:300px;">
+  <app-back-button *ngIf="role === 'visitor'" headline="Fragen an den Gärtner"></app-back-button>
+  <app-back-button *ngIf="role === 'gardener'" headline="Fragen eines Besuchers"></app-back-button>
+  <hr>
+  <div id="scrollableContainer" class="upscrollable-container chatbackground">
+    <div>
+      <div *ngFor="let chat of messages" class="break">
+        <div style="width: 100% !important">
+          <div [ngClass]="{message: true, self: chat.isSelf, other: !chat.isSelf}">
+            <span lang="de" class="chattext">{{chat.msg}}</span>
+            <div class="chattime">{{chat.createdAt}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="contactheader">
+    <form [formGroup]="addChatForm" (keydown)="keyDownFunction($event)" (ngSubmit)="onSubmit()" style="display: flex;">
+
+      <app-user-textarea height="100" style="width: 75%;" class="inputfield" label="Neue Nachricht:" [myForm]="addChatForm"
+        formFieldName="answer" [errorMessage]="errorMessages['answer']">
+      </app-user-textarea>
+
+      <div class="center">
+        <button class="yellow button" id="send-button"> Senden </button>
+      </div>
+
+    </form>
+  </div>
+</div>

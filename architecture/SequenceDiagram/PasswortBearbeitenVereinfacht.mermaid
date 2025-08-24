@@ -1,0 +1,33 @@
+sequenceDiagram
+    participant User
+    participant System
+    participant Backend
+
+    Note over User, Backend: Diagramm 2: Passwort bearbeiten (Vereinfacht)
+    
+    User->>System: 1: request to localhost
+    System->>Backend: 2: get user
+    Backend->>Backend: 3: check authentication of user
+    Backend->>System: 5: send user
+    System->>User: 4: send landingpage
+    User->>System: 6: submit data
+    System->>Backend: 7: send old password
+    Backend->>Backend: 8: check pw against database
+    
+    alt old password wrong
+        Backend->>System: 10: send boolean response: false
+        System->>User: 9: display error message: wrong password
+    else old password correct
+        Backend->>System: 11: send boolean response: true
+        System->>System: 12: check input format
+        
+        alt format check not successful
+            System->>User: 13: format check not successful
+            Note left of User: break wrong format
+        else format check successful
+            System->>Backend: 14: send updated user
+            Backend->>Backend: 15: update user
+            System->>User: 16: redirect to ./profile
+        
+    end
+end

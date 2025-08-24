@@ -1,0 +1,139 @@
+.event {
+  background-color: var(--mainau-beige);
+  color: var(--mainau-green);
+  padding: 5px;
+  width: 100%;
+}
+
+.margins {
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+.heading {
+  font-weight: bold;
+
+}
+
+.description {
+  font-weight: 400;
+
+}
+
+.text {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  font-size: 16px;
+}
+
+.picture {
+  max-width: 100px;
+  max-height: 100px;
+  margin-right: 10px;
+  background-size: cover;
+  border-radius: 3px;
+}
+
+.searchbar {
+  margin-right: 20px;
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
+
+.amount {
+  float: right;
+  background-color: var(--mainau-beige);
+  color: var(--mainau-green);
+  padding: 5px;
+  height: flex;
+  align-items: center;
+  border-radius: 0px 5px 5px 0px;
+}
+
+.fav {
+  color: var(--star) !important;
+}
+
+.container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 18px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 9fr 1fr;
+}
+
+.star {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--star-disabled);
+  border-radius: 0px 5px 5px 0px;
+}
+
+.container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 18px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.edit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0px 5px 5px 0px;
+}
+
+.modal {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0);
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: var(--mainau-green);
+  margin: 15% auto;
+  /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid var(--mainau-beige);
+  width: 80%;
+  /* Could be more or less, depending on screen size */
+  border-radius: 5px;
+}
+
+.eventcontainer {
+  border-radius: 5px 0px 0px 5px;
+}

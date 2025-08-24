@@ -1,0 +1,13 @@
+<p *ngIf="event" class="ticketdate">{{this.event.whole_date}}</p>
+<div class="ticketbox">
+  <div class="grid" *ngFor="let cat of this.selectedTickets?.tickets">
+    <div class="ticketinfo"> {{ cat.category }}</div>
+    <div class="ticketamount">
+      {{cat.amount}}x
+    </div>
+    <div class="ticketprice">
+      {{ cat.price }}€
+    </div>
+  </div>
+</div>
+<p class="ticketcost">Gesamtkosten: {{this.selectedTickets?.total}}€</p>

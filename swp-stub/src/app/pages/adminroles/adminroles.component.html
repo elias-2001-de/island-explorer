@@ -1,0 +1,45 @@
+<div class="page-container">
+  <h1> Rollenverwaltung</h1>
+  <button class="center button yellow" style="width:60%; margin-left:20%" routerLink="createadmin"> Neuen Account
+    erstellen </button>
+
+  <div class="searchbar">
+    <app-search-field label="Suchen" [(text)]="search" (textChange)="showFilteredAdminroles(search)">
+    </app-search-field>
+  </div>
+
+  <div class="scrollable-container" style="padding-bottom:160px;">
+    <div *ngFor="let adminrole of allAdminroles">
+      <div class="eventcontainer">
+        <div class="event text admingrid">
+          <div>
+            <div class="heading"> {{this.adminrole.firstname}} {{this.adminrole.lastname}} </div>
+            <div class="description">
+              {{this.adminrole.email}}
+              <div *ngIf="adminrole.role === 'admin'"> Administrator </div>
+              <div *ngIf="adminrole.role === 'gardener'"> Gärtner </div>
+            </div>
+          </div>
+          <button mat-icon-button (click)="modal(adminrole)"> <mat-icon>close</mat-icon></button>
+        </div>
+      </div>
+      <div id={{adminrole.email}} class="modal">
+        <div class="modal-content">
+          <p>Wollen sie wirklich den
+            <span *ngIf="adminrole.role === 'admin'"> Administrator </span>
+            <span *ngIf="adminrole.role === 'gardener'"> Gärtner </span>
+            <span style=" font-weight: 600;">
+              {{this.adminrole.firstname}} {{this.adminrole.lastname}}</span> ({{this.adminrole.email}})
+            löschen?
+            Diese Entscheidung kann nicht Rückgängig gemacht werden.
+          </p>
+          <div class="buttongrid">
+            <button class=" beige button" style="width:100%" (click)="close(adminrole)"> Nein</button>
+            <button class=" yellow button" style="width:100%" (click)="deleteStaff(adminrole)"> Ja</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

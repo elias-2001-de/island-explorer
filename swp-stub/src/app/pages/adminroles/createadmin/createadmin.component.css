@@ -1,0 +1,80 @@
+app-user-input {
+  width: 100%;
+}
+
+.namecolumn {
+  flex: 45%;
+}
+
+.row {
+  display: flex;
+}
+
+#street {
+  width: 75%;
+  padding-right: 8px
+}
+
+#house_no {
+  width: 25%
+}
+
+/*.roletext {}*/
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+#firstname {
+  width: 50%;
+  padding-right: 8px
+}
+
+#lastname {
+  width: 50%
+}
+
+.about {
+  margin-bottom: 70px;
+}
+
+.error {
+  font-size: 12pt;
+  color: var(--error);
+}
+
+/* The Modal (background) */
+.modal {
+  /* Hidden by default */
+  display: none;
+  /* Stay in place */
+  position: fixed;
+  /* Sit on top */
+  z-index: 1;
+  left: 0;
+  top: 0;
+  /* Full width */
+  width: 100%;
+  /* Full height */
+  height: 100%;
+  /* Enable scroll if needed */
+  overflow: auto;
+  /* Fallback color */
+  background-color: rgb(0, 0, 0);
+  /* Black w/ opacity */
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: var(--mainau-green);
+  /* 15% from the top and centered */
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid var(--mainau-beige);
+  /* Could be more or less, depending on screen size */
+  width: 80%;
+  border-radius: 5px;
+}

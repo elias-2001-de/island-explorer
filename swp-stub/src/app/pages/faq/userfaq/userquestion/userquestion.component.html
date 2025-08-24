@@ -1,0 +1,39 @@
+<div class="page-container">
+  <app-back-button headline="Frage stellen"></app-back-button>
+
+  <div class="scrollable-container" style="padding-bottom: 40px">
+    <p class="detail">
+      Stelle hier deine Frage und unsere Gärtner beantworten diese so schnell wie möglich. <br>
+      Die Antwort findest du dann in deinen <a routerLink="/userfaq/chats"> Fragen</a>.
+    </p>
+
+    <form [formGroup]="addQuestionForm" (ngSubmit)="onSubmit()">
+
+      <app-user-textarea class="inputfield" label="Betreff" [myForm]="addQuestionForm" formFieldName="topic"
+        [errorMessage]="errorMessages['topic']">
+      </app-user-textarea>
+
+      <app-user-textarea [heightPx]="100" class="inputfield" label="Frage" [myForm]="addQuestionForm"
+        formFieldName="question" [errorMessage]="errorMessages['question']">
+      </app-user-textarea>
+
+      <br>
+
+      <app-dropdown label="Kategorie" [myForm]="addQuestionForm" formFieldName="type"
+        [errorMessage]="errorMessages['type']" [options]="type">
+      </app-dropdown>
+
+      <br>
+
+      <div class="center">
+        <button class="yellow button">Fragen</button>
+      </div>
+      <div class="center">
+        <button class="beige button" (click)="abbrechen()">Abbrechen</button>
+      </div>
+
+    </form>
+
+  </div>
+
+</div>

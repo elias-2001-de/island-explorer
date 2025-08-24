@@ -1,0 +1,48 @@
+classDiagram
+    %% Chat System
+    class ChatController {
+        -conversationTable: ConversationTable
+        -messagesTable: MessagesTable
+        +constructor(conversationTable: ConversationTable, messagesTable: MessagesTable): ChatController
+        +sendMessage(req: Request, res: Response): Promise~void~
+        +getConversations(req: Request, res: Response): Promise~void~
+        +startConversation(req: Request, res: Response): Promise~void~
+        +getConversation(req: Request, res: Response): Promise~void~
+    }
+
+    class ConversationTable {
+        -table: ModelCtor~ConversationModel~
+        +constructor(sequelize: Sequelize): ConversationTable
+        +getAllConversations(): Promise~ConversationModel[]~
+        +getConversationById(id: number): Promise~ConversationModel~
+        +insertConversation(type: string, email: string): Promise~ConversationModel~
+        +getConversationsForUser(email: string): Promise~ConversationModel[]~
+    }
+
+    class MessagesTable {
+        -table: ModelCtor~MessagesModel~
+        +constructor(sequelize: Sequelize): MessagesTable
+        +getMessagesForConversation(conversation: number): Promise~MessagesModel[]~
+        +insertMessage(conversation: number, email: string, msg: string): Promise~MessagesModel~
+    }
+
+    class ConversationModel {
+        +id: number
+        +email: string
+        +type: string
+    }
+
+    class MessagesModel {
+        +id: number
+        +msg: string
+        +updatedAt: string
+        +createdAt: string
+        +email: string
+        +conversation: number
+    }
+
+    %% Relationships
+    ChatController --> ConversationTable : uses
+    ChatController --> MessagesTable : uses
+    ConversationTable --> ConversationModel : creates
+    MessagesTable --> MessagesModel : creates

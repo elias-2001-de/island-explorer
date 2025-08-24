@@ -1,0 +1,35 @@
+.picture {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+}
+
+.icons {
+  margin: 0 10px 0 0;
+  color: var(--mainau-beige);
+}
+
+.icontext {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+
+#detail-map {
+  height: 300px;
+  width: 100%;
+  margin-bottom: 100px;
+}
+
+#location-name {
+  font-style: italic;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 99fr;
+  grid-gap: 2px;
+}

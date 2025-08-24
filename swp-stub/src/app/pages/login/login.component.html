@@ -1,0 +1,37 @@
+<div class="scrollable-containerAlt">
+
+  <div class="start">
+    <h1>Island-Explorer</h1>
+    <img src="/assets/start.jpg" />
+  </div>
+
+  <div class="margin">
+    <form [formGroup]="loginForm" (keydown)="keyDownFunction($event)" (ngSubmit)="onSubmit()">
+      <app-user-input label="Email" [myForm]="loginForm" formFieldName="email">
+        [errorMessage]="errorMessages['email']"
+      </app-user-input>
+      <app-user-input label="Passwort" type="password" [myForm]="loginForm" formFieldName="password">
+        [errorMessage]="errorMessages['password']"
+      </app-user-input>
+
+      <br>
+
+      <div class="errorMessage center">{{ errorMessage }}</div>
+
+      <br>
+
+      <div class="center">
+        <button class="button yellow">Login</button>
+      </div>
+    </form>
+    <br>
+    <div class="info center">
+      Noch kein Konto? &nbsp; <a routerLink="/register">Hier registrieren</a>
+    </div>
+
+    <br>
+  </div>
+  <div class="info about center">
+    Mehr Informationen: &nbsp; <a routerLink="/about">Über uns</a>
+  </div>
+</div>

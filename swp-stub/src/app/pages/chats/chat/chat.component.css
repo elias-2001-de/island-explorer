@@ -1,0 +1,99 @@
+.question {
+  background-color: var(--mainau-beige);
+  color: var(--mainau-green);
+  padding: 5px;
+  border: 3px solid #000;
+  border-right-style: 1px solid !important;
+}
+
+.contactheader {
+  font-size: 20px;
+  font-weight: 600;
+  padding-left: 40px;
+  padding-right: 40px;
+  margin-top: 20px;
+}
+
+.chatbackground {
+  margin-top: -10px;
+  margin-bottom: -11px;
+  background-color: var(--mainau-beige);
+  height: 100%;
+  width: 100%;
+  padding: 10px;
+}
+
+.message {
+  padding: 5px;
+  border-radius: 10px;
+  margin-bottom: 5px;
+  display: block;
+  max-inline-size: 90%;
+  min-inline-size: 10%;
+  width: flex;
+}
+
+.break {
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 100%;
+  max-width: 100%;
+
+}
+
+.other {
+  float: left;
+  text-align: left;
+  color: var(--mainau-beige);
+  background-color: var(--mainau-green);
+  border-bottom-left-radius: 0px !important;
+}
+
+.self {
+  float: right;
+  text-align: left;
+  color: var(--mainau-beige);
+  background-color: var(--mainau-gold);
+  border-bottom-right-radius: 0px !important;
+}
+
+.chattime {
+  font-style: italic;
+  font-size: 11px;
+}
+
+.chattext {
+  width: 100%;
+  -ms-word-break: break-all;
+  word-break: break-all;
+
+  /* Non standard for webkit */
+  word-break: break-word;
+
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+}
+
+/* .chattext span {} */
+
+#send-button {
+  height: 45%;
+  width: 100%;
+  margin-left: 15px;
+  margin-top: 25px;
+}
+
+.upscrollable-container {
+  height: 100%;
+  width: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column-reverse;
+  /* Firefox */
+  scrollbar-width: none;
+  /* IE 10+ */
+  -ms-overflow-style: none;
+}

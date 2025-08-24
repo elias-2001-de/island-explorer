@@ -1,0 +1,29 @@
+.ellipse {
+  width: 50%;
+  height: 42px;
+  background: #9AB7BD;
+  border-radius: 37px;
+  margin-left: 25%;
+}
+
+.bellipse {
+  width: 60%;
+  height: 100px;
+  left: 80px;
+  top: 296px;
+  margin-left: 20%;
+  background: #9AB7BD;
+  border-radius: 57px;
+
+}
+
+#logo {
+  height: 136px;
+  width: flex;
+}
+
+
+#success {
+  margin-top: 200px;
+  color: var(--mainau-beige);
+}

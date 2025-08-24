@@ -1,0 +1,23 @@
+<div class="page-container">
+
+  <app-back-button headline="Name"></app-back-button>
+
+  <div class="scrollable-container">
+    <form [formGroup]="nameForm" (ngSubmit)="onSubmit()">
+      <app-user-input class="inputfield" label="Vorname" [myForm]="nameForm" formFieldName="firstname"
+        [errorMessage]="errorMessages['firstname']">
+      </app-user-input>
+      <app-user-input class="inputfield" label="Nachname" [myForm]="nameForm" formFieldName="lastname"
+        [errorMessage]="errorMessages['lastname']">
+      </app-user-input>
+      <br>
+
+      <div class="center">
+        <button class="yellow button">Speichern</button>
+      </div>
+      <div class="center">
+        <button class="beige button" (click)="abbrechen()">Abbrechen</button>
+      </div>
+    </form>
+  </div>
+</div>

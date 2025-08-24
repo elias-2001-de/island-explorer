@@ -1,0 +1,35 @@
+<div class="page-container">
+
+  <h1 class="headline" *ngIf="role === 'gardener'">
+    Deine Fragen
+  </h1>
+
+  <app-back-button *ngIf="role === 'visitor'" headline="Deine Fragen"></app-back-button>
+  <div *ngIf="role === 'gardener'" style="margin-left:40px; margin-right:40px">
+    <button class="yellow button center notif" style="height: 35px;  width:100%" routerLink="openchats">
+      Offene Fragen
+      <div class="notification">
+        <div class="notificationtext">{{ this.openLen }}</div>
+      </div>
+    </button>
+  </div>
+
+  <div class="scrollable-container" style="padding-bottom:50px;">
+    <div *ngFor="let chat of chats">
+      <div class="eventcontainer question">
+        <mat-button class="event-btn" routerLink="chat/{{chat.id}}">
+          <div *ngIf="chat.isOpen">
+            <div class="text new">
+              {{chat.topic}}
+            </div>
+          </div>
+          <div *ngIf="!chat.isOpen">
+            <div class="text" style="margin-left:5px;">
+              {{chat.topic}} <br>
+            </div>
+          </div>
+        </mat-button>
+      </div>
+    </div>
+  </div>
+</div>

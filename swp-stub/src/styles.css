@@ -1,0 +1,324 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+
+    /* Mittels dem -- Prefix können wir in CSS auch Variablen definieren, wie z.B. die Hauptfarben der App */
+    /* Da die 'styles.css' global gültig ist, können die hier definierten Variablen in allen Komponenten verwendet werden */
+    --mainau-green: #0C4522;
+    --mainau-gold: #A47D11;
+    --mainau-beige: #F7ECD5;
+    
+    --disabled: #f7ecd5bf;
+    --error: 'red';
+    --inputfield:  rgba(247, 236, 213, 0.7);
+    /* Die definierten Variablen können dann durch die "var()" Funktion eingesetzt werden */
+    --foreground: var(--mainau-beige);
+    --background: var(--mainau-green);
+    --accent: #117B84;
+    --star: #CA5310;
+    --star-disabled: rgb(81, 81, 81);
+
+    background: var(--background);
+    color: var(--foreground);
+}
+
+/*Page Containers*/
+
+.page-container {
+    height: 100%;
+    margin-top: 30px;
+    word-break: normal;
+    /* Extra Padding für die Navigationsbar */
+    padding-bottom: 160px;
+}
+
+/*für seiten ohne nav bar*/
+.page-containerAlt {
+    height: 100%;
+    margin-top: 30px;
+    word-break: normal;
+    padding-bottom: 70px;
+}
+
+.scrollable-container {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    height: 100%;
+    width: 100%;
+    padding: 20px;
+}
+
+.scrollable-containerAlt {
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 100%;
+    width: 100%;
+}
+
+/* Das Design benutzt den 'outlined' Icon theme */
+.mat-icon {
+    font-family: 'Material Icons Outlined';
+}
+
+
+a {
+    color: var(--foreground);
+}
+
+html,
+body {
+    height: 100%;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+h1 {
+    font-weight: 900;
+    font-size: 23px;
+    text-align: center;
+    line-height: 35px;
+}
+
+hr {
+    color: var(--mainau-beige);
+    /*border-style:2px solid var(--mainau-beige);*/
+}
+
+.title {
+    font-weight: 900;
+    font-size: 23px;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.subtitle {
+    font-weight: 700;
+    font-size: 18px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.detail{
+	font-size: 16px;
+}
+
+/* images */
+
+.detailpicture {
+    width: 100%;
+    height: auto;
+    position: relative;
+    border-radius: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    z-index: 0;
+}
+
+.detailpicture-fade {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    left: 20px;
+    z-index: 1;
+}
+
+.center {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.inputfield {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.error {
+    font-size: 12pt;
+    color: var(--error);
+}
+
+/*buttons*/
+
+.yellow {
+    color: var(--mainau-beige);
+    background-color: var(--mainau-gold);
+    border-color: var(--mainau-beige);
+}
+
+.beige {
+    color: var(--mainau-green);
+    background-color: var(--mainau-beige);
+    border-color: var(--mainau-green);
+}
+
+.button {
+    border: 2px solid;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-radius: 3px;
+    border-style: none;
+    width: 40%;
+    height: 35px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.button:disabled {
+    background-color: var(--disabled) !important;
+    color: grey !important;
+}
+
+.paymentinput {
+    margin-bottom: 25px;
+    margin-top: 25px;
+}
+
+/* Ticket Styling */
+.ticketheader {
+    font-size: 23px;
+    font-weight: 800;
+    line-height: 300%;
+}
+
+.ticketdate {
+    font-size: 18px;
+    line-height: 21px;
+    font-weight: 700;
+
+}
+
+.ticketamount {
+    text-align: right;
+    font-size: 18px;
+    margin-right: 5px;
+
+}
+  
+
+.ticketcost {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.loader {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    border: 12px solid var(--mainau-beige);
+    border-top: 12px solid var(--mainau-gold);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.errorMessage {
+    margin-left: 3px;
+    margin-right: 3px;
+    background-color: var(--disabled);
+    color: black;
+    align-self: left;
+    padding-left: 3px;
+    padding-left: 3px;
+    border-radius: 5px 5px 5px 5px;
+    font-size: 15px;
+    font-weight: 300;
+}
+
+/*Checkmark*/
+
+.checkcontainer {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 18px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.checkcontainer input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: var(--mainau-beige);
+    border-radius: 10%;
+    margin-top: 2px;
+    margin-left: 4px;
+}
+
+/* On mouse-over, add a grey background color */
+.checkcontainer:hover input~.checkmark {
+    background-color: var(--mainau-beige);
+}
+
+/* When the checkbox is checked, add a blue background */
+.checkcontainer input:checked~.checkmark {
+    background-color: var(--mainau-gold);
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.checkcontainer input:checked~.checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.checkcontainer .checkmark:after {
+    left: 6px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid var(--mainau-beige);
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.checktext{
+    margin-left: 20px;
+}
+
+/* User-textareas should not be resizable upon drag */
+textarea {
+    resize: none;
+}

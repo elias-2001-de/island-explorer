@@ -1,0 +1,35 @@
+<div class="page-container">
+  <app-back-button headline="Offene Fragen"></app-back-button>
+  <div class="select center">
+    <label for="categories-select">Kategorie wählen:</label>
+    <select name="categories" id="categories-select" (change)="filter()">
+      <option value="">Alle</option>
+      <option value="Rosen">Rosen</option>
+      <option value="Bäume">Bäume</option>
+      <option value="Zimmerpflanzen">Zimmerpflanzen</option>
+      <option value="Orchideen">Orchideen</option>
+      <option value="Schädlingsbekämpfung">Schädlingsbekämpfung</option>
+      <option value="Sonstiges">Sonstiges</option>
+    </select>
+
+  </div>
+
+  <div class="scrollable-container" style="padding-bottom:50px;">
+    <div *ngFor="let chat of chats">
+      <div class="eventcontainer question">
+        <mat-button class="event-btn" routerLink="chat/{{chat.id}}">
+          <div *ngIf="chat.isOpen" class="new">
+            <div class="text">
+              {{chat.topic}} <br>
+            </div>
+          </div>
+          <div *ngIf="!chat.isOpen">
+            <div class="text">
+              {{chat.topic}} <br>
+            </div>
+          </div>
+        </mat-button>
+      </div>
+    </div>
+  </div>
+</div>

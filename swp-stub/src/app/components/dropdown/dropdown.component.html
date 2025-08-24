@@ -1,0 +1,21 @@
+<div [formGroup]="myForm" class="container">
+  <div [ngClass]="isInvalid() ?  'label-invalid': 'label'" *ngIf="label">
+    {{ label }}
+  </div>
+
+  <div class="select">
+    <select #inputField name="select" class="input-field" [formControlName]="formFieldName"
+      [ngClass]="getSelectClass()">
+      <option *ngFor="let option of options" value="{{ option }}"> {{ option }} </option>
+    </select>
+  </div>
+
+  <div>
+    <div class="error" *ngIf="isInvalid() && myForm.value[formFieldName] === ''">
+      Dieses Feld bitte ausfüllen.
+    </div>
+    <div class="error" *ngIf="isInvalid() && myForm.value[formFieldName] !== ''">
+      {{ errorMessage }}
+    </div>
+  </div>
+</div>

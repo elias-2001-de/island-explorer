@@ -1,0 +1,46 @@
+select {
+  height: 33px;
+  width: 100%;
+  border-radius: 5px 5px 5px 5px;
+  border-color: #0000;
+  background-color: var(--mainau-beige);
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.select {
+  display: flex;
+  height: 33px;
+  border-radius: 15px;
+  border-style: none;
+}
+
+.error {
+  margin-left: 3px;
+  background-color: var(--inputfield);
+
+  align-self: left;
+  padding-left: 3px;
+  border-radius: 0 0 5px 5px;
+  margin-right: 3px;
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--mainau-green);
+  animation: appear 0.1s linear 1;
+}
+
+.label {
+  margin-left: 3px;
+  margin-bottom: -4px;
+
+  font-size: 15px;
+  font-weight: 300;
+}
+
+.label-invalid {
+  margin-left: 3px;
+  margin-bottom: -4px;
+
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--error);
+}

@@ -1,0 +1,7 @@
+<div class="container">
+  <div class="routing-box">
+    <router-outlet></router-outlet>
+  </div>
+
+  <app-navigation-bar *ngIf="loginService.isLoggedIn()"></app-navigation-bar>
+</div>

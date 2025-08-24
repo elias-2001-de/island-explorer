@@ -1,0 +1,45 @@
+<div *ngIf="event" class="page-container">
+  <app-back-button [headline]="this.event.title"></app-back-button>
+  <div class="scrollable-container">
+    <app-ticket-price-info [selectedTickets]="this.selectedTickets" [event]="this.event">
+    </app-ticket-price-info>
+    <br>
+    <br>
+
+    <div class="center bellipse">
+      <img id="logo" style="margin-top:9px" src=".\.\assets\payment\bachelorcard.png"><br>
+    </div><br>
+
+    <form [formGroup]="bachelorCardForm" (ngSubmit)="onSubmit()">
+      <app-user-input class="paymentinput" label="Name" [myForm]="bachelorCardForm" formFieldName="name"
+        [errorMessage]="errorMessages['name']">
+      </app-user-input>
+      <app-user-input class="paymentinput" label="Kartennummer" [myForm]="bachelorCardForm" formFieldName="cardNumber"
+        [errorMessage]="errorMessages['cardNumber']">
+      </app-user-input>
+      <app-user-input class="paymentinput" label="Prüfziffer" [myForm]="bachelorCardForm" formFieldName="securityCode"
+        [errorMessage]="errorMessages['securityCode']">
+      </app-user-input>
+      <app-user-input class="paymentinput" label="Gültig bis" [myForm]="bachelorCardForm" formFieldName="expirationDate"
+        [errorMessage]="errorMessages['expirationDate']">
+      </app-user-input>
+
+      <div class="center">
+        <br>
+        <div id="dynamic"></div>
+        <br>
+        <div *ngIf="errorMessage" class="errorMessage">{{ errorMessage }}</div>
+      </div>
+      <br>
+
+      <div class="center">
+        <button class="button yellow" [disabled]="buttonDisabled">Jetzt
+          Kaufen</button>
+      </div>
+    </form>
+
+    <div class="center" style="margin-bottom: 50px;">
+      <button class="beige button" (click)="cancel()" [disabled]="buttonDisabled">Abbrechen</button>
+    </div>
+    <div>
+    </div>

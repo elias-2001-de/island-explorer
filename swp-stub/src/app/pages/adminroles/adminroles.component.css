@@ -1,0 +1,83 @@
+.event {
+  background-color: var(--mainau-beige);
+  color: var(--mainau-green);
+  padding: 5px;
+  border-radius: 5px;
+  margin-top: 15px;
+}
+
+.heading {
+  font-weight: bold;
+  line-height: 1;
+}
+
+.description {
+  font-weight: 400;
+  line-height: 1;
+}
+
+.text {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  font-size: 16px;
+}
+
+.picture {
+  max-width: 100px;
+  max-height: 100px;
+  margin-right: 10px;
+  background-size: cover;
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 150px;
+}
+
+.eventcontainer {
+  margin-bottom: 15px;
+}
+
+.searchbar {
+  margin-right: 20px;
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
+
+.admingrid {
+  display: grid;
+  grid-template-columns: 89% 11%;
+}
+
+/* The Modal (background) */
+.modal {
+  /* Hidden by default */
+  display: none;
+  /* Stay in place */
+  position: fixed;
+  /* Sit on top */
+  z-index: 1;
+  left: 0;
+  top: 0;
+  /* Full width */
+  width: 100%;
+  /* Full height */
+  height: 100%;
+  /* Enable scroll if needed */
+  overflow: auto;
+  /* Fallback color */
+  background-color: rgb(0, 0, 0);
+  /* Black w/ opacity */
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: var(--mainau-green);
+  /* 15% from the top and centered */
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid var(--mainau-beige);
+  /* Could be more or less, depending on screen size */
+  width: 80%;
+  border-radius: 5px;
+}

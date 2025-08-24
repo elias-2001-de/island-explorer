@@ -1,0 +1,44 @@
+app-user-input {
+  width: 100%;
+}
+
+.namecolumn {
+  flex: 45%;
+}
+
+.row {
+  display: flex;
+}
+
+#street {
+  width: 75%;
+  padding-right: 8px
+}
+
+#house_no {
+  width: 25%
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+#firstname {
+  width: 50%;
+  padding-right: 8px
+}
+
+#lastname {
+  width: 50%
+}
+
+.about {
+  margin-bottom: 70px;
+}
+
+.error {
+  font-size: 12pt;
+  color: red;
+}
