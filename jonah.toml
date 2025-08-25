@@ -1,13 +1,10 @@
 docker = "./Dockerfile"
+create_host_dirs = ["island-explorer/"]
 exports = [
     { path = "app/assets/", name = "assets" },
     { path = "app/index.html", name = "island-explorer/index.html" },
     { path = "app/style.css", name = "island-explorer/style.css" },
     { path = "app/user_stories/", name = "island-explorer/user_stories/" },
-    # { path = "app/user_stories/style.css", name = "island-explorer/user_stories/style.css" },
     { path = "app/architecture/", name = "island-explorer/architecture/" },
     { path = "app/design/", name = "island-explorer/design/" },
-
-
-    
 ]

@@ -3,9 +3,8 @@
 build the website
 
 ```bash
-curl -L -o jonah https://github.com/elias-2001-de/jonah/releases/download/v0.1.6/jonah
+curl -L -o jonah https://github.com/elias-2001-de/jonah/releases/download/v0.1.7/jonah
 chmod +x jonah
-mkdir -p dist/island-explorer/
 ./jonah project jonah.toml dist
 ```
 
