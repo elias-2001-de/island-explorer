@@ -7,4 +7,5 @@ exports = [
     { path = "app/user_stories/", name = "island-explorer/user_stories/" },
     { path = "app/architecture/", name = "island-explorer/architecture/" },
     { path = "app/design/", name = "island-explorer/design/" },
+    { path = "app/index-en.html", name = "island-explorer/index-en.html" },
 ]
