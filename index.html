@@ -11,14 +11,14 @@
 <body>
     <div class="container">
 
-        <button onclick="window.history.back()"
-            style="position: fixed; left: 20px; top: 20px; width: 50px; height: 50px; border-radius: 50%; border: none; background: rgba(0,0,0,0.7); color: white; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 20px; backdrop-filter: blur(10px); transition: all 0.3s ease;"
+        <a href="../"
+            style="position: fixed; left: 20px; top: 20px; width: 50px; height: 50px; border-radius: 50%; background: rgba(0,0,0,0.7); color: white; display: flex; align-items: center; justify-content: center; font-size: 20px; backdrop-filter: blur(10px); transition: all 0.3s ease; text-decoration: none;"
             onmouseover="this.style.background='rgba(0,0,0,0.9)'; this.style.transform='scale(1.1)'"
             onmouseout="this.style.background='rgba(0,0,0,0.7)'; this.style.transform='scale(1)'">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                 <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
             </svg>
-        </button>
+        </a>
         <div class="hero">
             <h1>🏝️ Island Explorer</h1>
         </div>
@@ -167,12 +167,14 @@
                             # Repository klonen<br>
                             git clone https://github.com/elias-2001-de/swp-2023-gruppe-02.git<br>
                             cd swp-2023-gruppe-02<br><br>
-                            # Mit Docker Compose starten<br>
+                            # Docker Compose<br>
+                            docker compose build<br>
                             docker compose up<br><br>
                             # Die App ist dann verfügbar unter:<br>
-                            # http://localhost:4200 (Frontend)<br>
+                            # http://localhost:8000 (Frontend)<br>
                             # http://localhost:3000 (Backend-API)
                         </div>
+
                         <button class="copy-btn" onclick="copyInstallCommands()">
                             <svg viewBox="0 0 16 16" fill="currentColor">
                                 <path
@@ -207,6 +209,7 @@
         function copyInstallCommands() {
             const commands = `git clone https://github.com/elias-2001-de/swp-2023-gruppe-02.git
 cd swp-2023-gruppe-02
+docker compose build
 docker compose up`;
 
             navigator.clipboard.writeText(commands).then(function () {
