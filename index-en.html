@@ -323,14 +323,14 @@
                     <p><strong>This is a university portfolio project showcasing modern web development
                             practices.</strong> The application demonstrates full-stack development skills including
                         Angular frontend, Node.js backend, and PostgreSQL database integration.</p>
-                    <p>For the <strong>complete app demo and documentation</strong> (in German), visit: <a
-                            href="../de/index.html" class="highlight-link">🇩🇪 German Version</a></p>
+                    <p>For the <strong>complete app demo and documentation</strong> (in German), visit: <a href="#"
+                            class="highlight-link" id="lang-switch-version">🇩🇪 German Version</a></p>
                 </div>
 
                 <div class="cta-section">
                     <h3>🚀 Experience the App</h3>
                     <p>Try the complete interactive demo with various user roles and features:</p>
-                    <a href="../de/index.html" class="cta-button">🇩🇪 Launch App Demo</a>
+                    <a href="#" class="cta-button" id="lang-switch-launch">🇩🇪 Launch App Demo</a>
                 </div>
 
                 <div class="team-section" id="team">
@@ -388,6 +388,16 @@
             </div>
         </div>
     </div>
+
+
+    <script>
+        const current = window.location.pathname;
+        const parts = current.split("/");
+        parts[1] = "de";
+        const target = parts.join("/");
+        document.getElementById("lang-switch-launch").href = target;
+        document.getElementById("lang-switch-version").href = target;
+    </script>
 </body>
 
 </html>
