@@ -25,6 +25,7 @@ RUN python3 generate_site.py
 FROM alpine:3.22 as final
 
 
+COPY index-en.html /app/index-en.html
 COPY index.html /app/index.html
 COPY style.css /app/style.css
 COPY design /app/design
